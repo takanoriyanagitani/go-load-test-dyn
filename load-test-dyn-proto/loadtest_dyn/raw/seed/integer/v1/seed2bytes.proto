@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package loadtest_dyn.raw.seed.integer.v1;
+
+option go_package = "github.com/takanoriyanagitani/go-load-test-dyn/loadtest_dyn/raw/seed/integer/v1";
+
+message BytesFrom64iRequest {
+  sfixed64 seed = 1;
+}
+
+message BytesFrom64iResponse {
+  bytes generated = 1;
+}
+
+service Seed64iService {
+  rpc BytesFrom64i(BytesFrom64iRequest) returns (BytesFrom64iResponse);
+}
