@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package loadtest_dyn.http.v1;
+
+option go_package = "github.com/takanoriyanagitani/go-load-test-dyn/loadtest_dyn/http/v1";
+
+message HeaderItem {
+  repeated string values = 1;
+}
+
+message Request {
+  string url = 1;
+  map<string, HeaderItem> header = 2;
+  bytes body = 3;
+}
+
+message Response {
+  string status = 1;
+  int32 status_code = 2;
+  map<string, HeaderItem> header = 3;
+  bytes body = 4;
+  repeated string transfer_encoding = 5;
+}
+
+message SimpleRequest {
+  string url = 1;
+  string content_type = 2;
+  bytes body = 3;
+}
+
+message TinyResponse {
+  int32 status_code = 1;
+}
