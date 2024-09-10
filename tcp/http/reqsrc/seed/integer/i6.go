@@ -9,6 +9,7 @@ import (
 	hv1 "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/v1"
 )
 
+// Gets the seed(64-bit integer).
 type SeedSource64i func(context.Context) (int64, error)
 
 type SimpleRequestSource64i func(context.Context, int64) (*ph1.SimpleRequest, error)
