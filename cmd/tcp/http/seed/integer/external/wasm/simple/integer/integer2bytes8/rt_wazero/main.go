@@ -119,6 +119,7 @@ func startWorker(
 	rtm wz.Runtime,
 	built wz.CompiledModule,
 	reqs <-chan struct{},
+	processedCnt chan<- uint64,
 ) {
 	var built2instance func(
 		context.Context,
@@ -138,12 +139,15 @@ func startWorker(
 		return
 	}
 
+	var subtot uint64 = 0
 	for range reqs {
 		e := loader(ctx)
 		if nil != e {
 			log.Fatalf("unable to call: %v\n", e)
 		}
+		subtot += 1
 	}
+	processedCnt<- subtot
 }
 
 func main() {
@@ -172,8 +176,9 @@ func main() {
 	}
 	defer built.Close(ctx)
 
-	var reqs chan struct{} = make(chan struct{}, 16)
-	defer close(reqs)
+	var reqs chan struct{} = make(chan struct{}, maxWorkers)
+
+	var tot chan uint64 = make(chan uint64, maxWorkers)
 
 	for i := 0; i < maxWorkers; i++ {
 		go startWorker(
@@ -181,10 +186,20 @@ func main() {
 			rtm,
 			built,
 			reqs,
+			tot,
 		)
 	}
 
 	for i := 0; i < maxLoop; i++ {
 		reqs <- struct{}{}
 	}
+	close(reqs)
+
+	var gtot uint64 = 0
+	for i := 0; i < maxWorkers; i++ {
+		var stot uint64 = <-tot
+		gtot += stot
+	}
+
+	log.Printf("total req cnt: %v\n", gtot)
 }
