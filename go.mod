@@ -3,6 +3,7 @@ module github.com/takanoriyanagitani/go-load-test-dyn
 go 1.23.0
 
 require (
+	github.com/tetratelabs/wazero v1.8.0 // indirect
 	golang.org/x/net v0.26.0 // indirect
 	golang.org/x/sys v0.21.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
