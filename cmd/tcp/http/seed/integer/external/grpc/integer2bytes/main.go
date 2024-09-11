@@ -73,7 +73,9 @@ var sclient gif.Seed64IServiceClient = gif.NewSeed64IServiceClient(
 	cci,
 )
 
-var bsource egi.ByteSource64i = egi.IndirectByteSourceGrpc{sclient}.
+var bsource egi.ByteSource64i = egi.IndirectByteSourceGrpc{
+	Seed64IServiceClient: sclient,
+}.
 	ToByteSource64i()
 var bodysrc rsi.BodySource64i = rsi.BodySource64i(bsource)
 var reqsrc rsi.SimpleRequestSource64i = bodysrc.
