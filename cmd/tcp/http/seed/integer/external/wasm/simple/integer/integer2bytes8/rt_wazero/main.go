@@ -147,7 +147,7 @@ func startWorker(
 		}
 		subtot += 1
 	}
-	processedCnt<- subtot
+	processedCnt <- subtot
 }
 
 func main() {
