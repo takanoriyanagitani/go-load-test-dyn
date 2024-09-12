@@ -1,4 +1,4 @@
-module github.com/takanoriyanagitani/go-load-test-dyn
+module github.com/takanoriyanagitani/go-load-test-dyn/v2
 
 go 1.23.0
 
