@@ -119,7 +119,7 @@ func instance2loader(
 
 	return src.ToLoadSingle(
 		sis.SeedSourceUnixtimeMicros64i,
-		sst.Req2tgtSTstdHttpDefault,
+		sst.Req2tgtSTstdHttpDefault, // TODO: use faster http client
 		hv1.TinyResponseToSinkDiscard,
 	), nil
 }
@@ -157,10 +157,21 @@ func startWorker(
 		}
 		cnt += 1
 	}
-	subtot<- cnt
+	subtot <- cnt
 }
 
 func main() {
+	log.Printf("wasm location(ENV_WASM_LOC): %s\n", wasmLocation)
+	log.Printf("seed -> page func name(ENV_WASM_FNC): %s\n", wasmFuncName)
+	log.Printf("offset func name(ENV_WASM_SIZ): %s\n", wasmSizeName)
+
+	log.Printf("target url(ENV_TARGET_URL): %s\n", targetUrl)
+	log.Printf("target content type(ENV_TARGET_TYP): %s\n", targetTyp)
+
+	log.Printf("max wasm size(ENV_WASM_BYTES_MAX): %v\n", maxWasmBytes)
+	log.Printf("max loop(ENV_MAX_LOOP): %v\n", maxLoop)
+	log.Printf("max worker(ENV_MAX_WORKER): %v\n", maxWorkers)
+
 	var ctx context.Context = context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
