@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"time"
 
 	wz "github.com/tetratelabs/wazero"
 	wa "github.com/tetratelabs/wazero/api"
@@ -42,12 +43,24 @@ func parseIntOrAlt(s string, alt int) int {
 	}
 }
 
+func parseDurationOrAlt(s string, alt time.Duration) time.Duration {
+	parsed, e := time.ParseDuration(s)
+	switch e {
+	case nil:
+		return parsed
+	default:
+		return alt
+	}
+}
+
 var wasmLocation string = getenvOrAlt("ENV_WASM_LOC", "./path/to/module.wasm")
 var wasmFuncName string = getenvOrAlt("ENV_WASM_FNC", "seed2page")
 var wasmSizeName string = getenvOrAlt("ENV_WASM_SIZ", "offset64k")
 
 var targetUrl string = getenvOrAlt("ENV_TARGET_URL", "http://localhost/api")
 var targetTyp string = getenvOrAlt("ENV_TARGET_TYP", "application/octet-stream")
+
+var perfMode string = getenvOrAlt("ENV_PERF_MODE", "notick")
 
 var maxWasmBytes int = parseIntOrAlt(
 	getenvOrAlt("ENV_WASM_BYTES_MAX", "1048576"),
@@ -62,6 +75,11 @@ var maxLoop int = parseIntOrAlt(
 var maxWorkers int = parseIntOrAlt(
 	getenvOrAlt("ENV_MAX_WORKER", "16"),
 	16,
+)
+
+var tickDuration time.Duration = parseDurationOrAlt(
+	getenvOrAlt("ENV_TICK_DURATION", "1ms"),
+	1*time.Millisecond,
 )
 
 var cfg wz.ModuleConfig = wz.NewModuleConfig().
@@ -172,6 +190,10 @@ func main() {
 	log.Printf("max loop(ENV_MAX_LOOP): %v\n", maxLoop)
 	log.Printf("max worker(ENV_MAX_WORKER): %v\n", maxWorkers)
 
+	log.Printf("perf mode(ENV_PERF_MODE): %s", perfMode)
+
+	log.Printf("tick duration(ENV_TICK_DURATION): %v", tickDuration)
+
 	var ctx context.Context = context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
@@ -211,9 +233,20 @@ func main() {
 		)
 	}
 
-	for i := 0; i < maxLoop; i++ {
-		reqs <- struct{}{}
+	switch perfMode {
+	// this never stops
+	case "tick":
+		var tick <-chan time.Time = time.Tick(tickDuration)
+		for range tick {
+			reqs <- struct{}{}
+		}
+	// this stops after the max loop
+	default:
+		for i := 0; i < maxLoop; i++ {
+			reqs <- struct{}{}
+		}
 	}
+
 	close(reqs)
 
 	var tot uint64 = 0
