@@ -51,3 +51,8 @@ var ResponseConverterDiscardBody ResponseConverter = func(
 
 var Req2tgtSTstdHttpDefault hv1.RequestToTargetST = TargetToResponseStdDefault.
 	ToRequestToTargetStPOST(ResponseConverterDiscardBody)
+
+func Req2tgtSTstdHttpDefaultNew(client *http.Client) hv1.RequestToTargetST {
+	ttrs := TargetToResponseStd{Client: client}
+	return ttrs.ToRequestToTargetStPOST(ResponseConverterDiscardBody)
+}

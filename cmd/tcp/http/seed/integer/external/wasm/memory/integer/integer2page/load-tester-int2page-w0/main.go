@@ -4,6 +4,7 @@ import (
 	"context"
 	"io"
 	"log"
+	"net/http"
 	"os"
 	"strconv"
 	"time"
@@ -137,7 +138,7 @@ func instance2loader(
 
 	return src.ToLoadSingle(
 		sis.SeedSourceUnixtimeMicros64i,
-		sst.Req2tgtSTstdHttpDefault, // TODO: use faster http client
+		sst.Req2tgtSTstdHttpDefaultNew(&http.Client{}), // TODO: faster client
 		hv1.TinyResponseToSinkDiscard,
 	), nil
 }
