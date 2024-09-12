@@ -3,7 +3,7 @@ package segi
 import (
 	"context"
 
-	rsi "github.com/takanoriyanagitani/go-load-test-dyn/load-test-dyn-proto/loadtest_dyn/raw/seed/integer/v1"
+	rsi "github.com/takanoriyanagitani/go-load-test-dyn/v2/load-test-dyn-proto/loadtest_dyn/raw/seed/integer/v1"
 )
 
 type ByteSource64i func(context.Context, int64) ([]byte, error)

@@ -15,4 +15,4 @@ export ENV_TARGET_TYP="${ENV_TARGET_TYP:-application/json}"
 export ENV_MAX_LOOP=${ENV_MAX_LOOP:-16}
 export ENV_MAX_WORKER=${ENV_MAX_WORKER:-2}
 
-time ./rt_wazero
+time ./load-tester-int2page-w0

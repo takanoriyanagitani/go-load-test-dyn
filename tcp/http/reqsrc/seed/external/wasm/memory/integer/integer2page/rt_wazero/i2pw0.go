@@ -8,7 +8,7 @@ import (
 
 	wa "github.com/tetratelabs/wazero/api"
 
-	i2p "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/reqsrc/seed/external/wasm/memory/integer/integer2page"
+	i2p "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/reqsrc/seed/external/wasm/memory/integer/integer2page"
 )
 
 type IntegerToPage struct {

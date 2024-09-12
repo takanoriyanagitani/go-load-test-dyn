@@ -1,3 +1,7 @@
+github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
+github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
+github.com/takanoriyanagitani/go-load-test-dyn v1.0.1 h1:nC3gaWk3CBlweABudFT+akI4kl1MQABmyPuL2IVvjt0=
+github.com/takanoriyanagitani/go-load-test-dyn v1.0.1/go.mod h1:5upwKXZ0j+4qGopQAwhJHBuHV4MCaq4nUSOWCrPft0o=
 github.com/tetratelabs/wazero v1.8.0 h1:iEKu0d4c2Pd+QSRieYbnQC9yiFlMS9D+Jr0LsRmcF4g=
 github.com/tetratelabs/wazero v1.8.0/go.mod h1:yAI0XTsMBhREkM/YDAK/zNou3GoiAce1P6+rp/wQhjs=
 golang.org/x/net v0.26.0 h1:soB7SVo0PWrY4vPW/+ay0jKDNScG2X9wFeYlXIvJsOQ=

@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	iseed "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/reqsrc/seed/integer"
+	iseed "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/reqsrc/seed/integer"
 )
 
 type TimeSource func(context.Context) (time.Time, error)

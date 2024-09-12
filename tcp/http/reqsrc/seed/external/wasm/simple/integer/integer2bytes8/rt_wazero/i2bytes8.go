@@ -8,7 +8,7 @@ import (
 
 	wa "github.com/tetratelabs/wazero/api"
 
-	i2b8 "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/reqsrc/seed/external/wasm/simple/integer/integer2bytes8"
+	i2b8 "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/reqsrc/seed/external/wasm/simple/integer/integer2bytes8"
 )
 
 type IntegerToU64 struct {

@@ -3,10 +3,10 @@ package iseed
 import (
 	"context"
 
-	lt "github.com/takanoriyanagitani/go-load-test-dyn"
+	lt "github.com/takanoriyanagitani/go-load-test-dyn/v2"
 
-	ph1 "github.com/takanoriyanagitani/go-load-test-dyn/load-test-dyn-proto/loadtest_dyn/http/v1"
-	hv1 "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/v1"
+	ph1 "github.com/takanoriyanagitani/go-load-test-dyn/v2/load-test-dyn-proto/loadtest_dyn/http/v1"
+	hv1 "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/v1"
 )
 
 // Gets the seed(64-bit integer).

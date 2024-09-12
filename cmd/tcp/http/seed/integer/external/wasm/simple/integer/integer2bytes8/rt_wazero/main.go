@@ -10,15 +10,15 @@ import (
 	wz "github.com/tetratelabs/wazero"
 	wa "github.com/tetratelabs/wazero/api"
 
-	gltd "github.com/takanoriyanagitani/go-load-test-dyn"
+	gltd "github.com/takanoriyanagitani/go-load-test-dyn/v2"
 
-	si "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/reqsrc/seed/integer"
-	sis "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/reqsrc/seed/integer/stime"
+	si "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/reqsrc/seed/integer"
+	sis "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/reqsrc/seed/integer/stime"
 
-	hv1 "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/v1"
-	sst "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/v1/sender/std"
+	hv1 "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/v1"
+	sst "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/v1/sender/std"
 
-	wzb "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/reqsrc/seed/external/wasm/simple/integer/integer2bytes8/rt_wazero"
+	wzb "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/reqsrc/seed/external/wasm/simple/integer/integer2bytes8/rt_wazero"
 )
 
 func getenvOrAlt(key, alt string) string {

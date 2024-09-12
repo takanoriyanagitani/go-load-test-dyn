@@ -9,17 +9,17 @@ import (
 	gc "google.golang.org/grpc/credentials"
 	gci "google.golang.org/grpc/credentials/insecure"
 
-	gif "github.com/takanoriyanagitani/go-load-test-dyn/load-test-dyn-proto/loadtest_dyn/raw/seed/integer/v1"
+	gif "github.com/takanoriyanagitani/go-load-test-dyn/v2/load-test-dyn-proto/loadtest_dyn/raw/seed/integer/v1"
 
-	egi "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/reqsrc/seed/external/grpc/integer"
+	egi "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/reqsrc/seed/external/grpc/integer"
 
-	rsi "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/reqsrc/seed/integer"
-	sis "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/reqsrc/seed/integer/stime"
+	rsi "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/reqsrc/seed/integer"
+	sis "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/reqsrc/seed/integer/stime"
 
-	hv1 "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/v1"
-	sst "github.com/takanoriyanagitani/go-load-test-dyn/tcp/http/v1/sender/std"
+	hv1 "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/v1"
+	sst "github.com/takanoriyanagitani/go-load-test-dyn/v2/tcp/http/v1/sender/std"
 
-	gltd "github.com/takanoriyanagitani/go-load-test-dyn"
+	gltd "github.com/takanoriyanagitani/go-load-test-dyn/v2"
 )
 
 func must[T any](t T, e error) T {
