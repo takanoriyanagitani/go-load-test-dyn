@@ -104,6 +104,7 @@ func configWithEnvVars(
 		envKeys,
 		func(old wz.ModuleConfig, key string) wz.ModuleConfig {
 			var val string = getenvOrAlt(key, alt)
+			log.Printf("key,val = %s,%s\n", key, val)
 			return old.
 				WithEnv(key, val)
 		},
@@ -239,6 +240,8 @@ func main() {
 	log.Printf("perf mode(ENV_PERF_MODE): %s", perfMode)
 
 	log.Printf("tick duration(ENV_TICK_DURATION): %v", tickDuration)
+
+	log.Printf("keys(ENV_KEYS_TO_WASI): %s", envKeys)
 
 	var ctx context.Context = context.Background()
 	ctx, cancel := context.WithCancel(ctx)
