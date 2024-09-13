@@ -14,6 +14,7 @@ type SeedSource64i func(context.Context) (int64, error)
 
 type SimpleRequestSource64i func(context.Context, int64) (*ph1.SimpleRequest, error)
 
+// Generates bytes from the seed(int64).
 type BodySource64i func(context.Context, int64) ([]byte, error)
 
 func (s SimpleRequestSource64i) ToLoadSingle(
