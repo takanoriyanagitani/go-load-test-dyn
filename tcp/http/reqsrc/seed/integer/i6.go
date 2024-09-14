@@ -12,6 +12,7 @@ import (
 // Gets the seed(64-bit integer).
 type SeedSource64i func(context.Context) (int64, error)
 
+// Generates the request from the seed(int64).
 type SimpleRequestSource64i func(context.Context, int64) (*ph1.SimpleRequest, error)
 
 // Generates bytes from the seed(int64).
