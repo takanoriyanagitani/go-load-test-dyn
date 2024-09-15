@@ -43,6 +43,7 @@ func (s SimpleRequestSource64i) ToLoadSingle(
 	}
 }
 
+// Converts to [SimpleRequestSource64i] using the url and the content type.
 func (b BodySource64i) ToSimpleSource(
 	url string,
 	contentType string,
